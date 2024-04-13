@@ -26,7 +26,7 @@ export default function FooterContainer() {
                 RazorPay Intigration
               </h1>
             </Link>
-            <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+            <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6 mt-8">
               <div>
                 <Footer.Title title="about" />
                 <Footer.LinkGroup col>
@@ -52,7 +52,7 @@ export default function FooterContainer() {
           </div>
           <Footer.Divider />
           <div className="w-full sm:flex sm:items-center sm:justify-between">
-            <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+            <Footer.Copyright href="#" by="RazorPay Intigration™" year={new Date().getFullYear()} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <Footer.Icon href="#" icon={BsFacebook} />
               <Footer.Icon href="#" icon={BsInstagram} />
