@@ -29,16 +29,18 @@ export default function Header() {
   return (
     <div>
       <Navbar fluid rounded>
-        <Navbar.Brand as="Link" href="/">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/028/766/371/original/gopay-payment-icon-symbol-free-png.png"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite React Logo"
-          />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            RazorPay Intigration
-          </span>
-        </Navbar.Brand>
+        <Link to="/">
+          <Navbar.Brand as="div">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/028/766/371/original/gopay-payment-icon-symbol-free-png.png"
+              className="mr-3 h-6 sm:h-9"
+              alt="Flowbite React Logo"
+            />
+            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+              RazorPay Intigration
+            </span>
+          </Navbar.Brand>
+        </Link>
         <div className="flex md:order-2">
           {currentUser ? (
             <Dropdown
@@ -62,7 +64,7 @@ export default function Header() {
               <Dropdown.Item>Settings</Dropdown.Item>
               <Dropdown.Item>Earnings</Dropdown.Item>
               <Dropdown.Divider />
-              <Dropdown.Item onClick={handleSignout} >Sign out</Dropdown.Item>
+              <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
             </Dropdown>
           ) : (
             <div className="flex items-center gap-4">

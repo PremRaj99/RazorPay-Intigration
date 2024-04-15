@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import UserRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import purchaseRoutes from "./routes/purchase.route.js";
-import userDetailRoutes from "./routes/userDetail.route.js";
 import razorPayRoutes from "./routes/razorPay.route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
@@ -33,7 +32,6 @@ app.listen("3000", () => {
 app.use("/api/user", UserRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/purchase", purchaseRoutes);
-app.use("/api/userDetail", userDetailRoutes);
 app.use("/api/razorpay", razorPayRoutes);
 
 app.use(express.static(path.join(__dirname, "/client/dist")));

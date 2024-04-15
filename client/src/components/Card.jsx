@@ -19,18 +19,6 @@ export default function CardComponent({ image, price, name }) {
         return setError("Key not found");
       }
 
-      const res = await fetch(`/api/userDetail/${currentUser._id}`);
-      let userName = "";
-      let userEmail = "";
-      let userContact = "";
-
-      if (res.ok) {
-        const data = await res.json();
-        userName = data.name;
-        userEmail = data.email;
-        userContact = data.contact;
-      }
-
       const response = await fetch(`/api/purchase/${currentUser._id}`, {
         method: "POST",
         headers: {
@@ -38,14 +26,10 @@ export default function CardComponent({ image, price, name }) {
         },
         body: JSON.stringify({
           name: name,
-          price: price,
-          userName: userName,
-          userEmail: userEmail,
-          userContact: userContact,
+          price: price
         }),
       });
       const order = await response.json();
-      console.log(order)
 
       const options = {
         key: key,
@@ -57,9 +41,9 @@ export default function CardComponent({ image, price, name }) {
         order_id: order.id,
         callback_url: `/api/purchase/verifytransaction/${currentUser._id}`,
         prefill: {
-          name: userName,
-          email: userEmail,
-          contact: userContact,
+          name: "",
+          email: "",
+          contact: "",
         },
         notes: {
           address: "Razorpay Corporate Office",

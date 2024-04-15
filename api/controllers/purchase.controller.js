@@ -1,10 +1,9 @@
 import Transaction from "../models/transaction.model.js";
-import UserDetail from "../models/userDetail.js";
 import { errorHandler } from "../utils/error.js";
 import { razorpayInstance } from "../utils/razorpay.js";
 
 export const purchase = async (req, res, next) => {
-  const { name, price, userName, userEmail, userContact } = req.body;
+  const { name, price } = req.body;
 
   if (req.user.id !== req.params.userId) {
     return next(
@@ -13,17 +12,6 @@ export const purchase = async (req, res, next) => {
   }
 
   try {
-    const getuserdetails = await UserDetail.findOne({ userId: req.params.userId });
-
-    if (!getuserdetails) {
-      const createuserDetail = new UserDetail({
-        userId: req.params.userId,
-        name: userName,
-        email: userEmail,
-        contact: userContact,
-      });
-      await createuserDetail.save();
-    }
     const options = {
       amount: parseInt(price) * 100, // amount in the smallest currency unit
       currency: "INR",
@@ -47,13 +35,13 @@ export const verifytransaction = async (req, res, next) => {
   // const { name, price, razorPayId } = req.body;
 
   try {
-    console.log(req.body)
+    console.log(req);
     // const updateTransaction = await Transaction.findOneAndUpdate(
     //   { razorPayId: razorPayId },
     //   { $set: { status: "complete" } },
     //   { new: true }
     // );
-    res.status(200).json("true");
+    res.status(200).json({ sucess: "true", body: req.body });
   } catch (error) {
     next(error);
   }
